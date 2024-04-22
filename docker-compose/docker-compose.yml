@@ -21,9 +21,8 @@ version: "3.8"
       - crowdsec
       - web-app
     networks:
-      proxy:
-        ipv4_address: 10.x.x.5
-      frontend:
+      - proxy
+      - frontend
 
   crowdsec:
     container_name: crowdsec
@@ -54,10 +53,6 @@ version: "3.8"
 networks:
   proxy:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 10.x.x.0/16
-          gateway: 10.x.x.1
   frontend:
     driver: bridge
   backend:
