@@ -11,8 +11,8 @@
 
 	# allow the Docker IP range to act as a trusted proxy to set the right client ip https://github.com/hslatman/caddy-crowdsec-bouncer/issues/33
 	servers {
-		trusted_proxies static 10.x.x.5
-		client_ip_headers Cf-Connecting-Ip X-Forwarded-For
+		trusted_proxies static private_ranges
+		client_ip_headers Cf-Connecting-Ip
 	}
 }
 
@@ -27,7 +27,7 @@
 (cloudflare) {
 	tls {
 		dns cloudflare {$CLOUDFLARE_API_TOKEN}
-        resolvers 1.1.1.1
+		resolvers 1.1.1.1
 	}
 }
 
